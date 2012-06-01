@@ -1,0 +1,101 @@
+#!/bin/bash
+
+#
+#
+# Web refresh By Ryan Pendergast - http://rynop.com
+#
+# For more info and most up to date version see https://github.com/rynop/webrf
+#
+#
+
+NAME=webrf
+WR_FILE=~/.webrefresh
+
+function usage() {
+	echo "$NAME: web browser refresh automation helper"
+	echo "REQUIREMENTS:"
+	echo "  * sudo apt-get install xdotool compizconfig-settings-manager"
+	echo "  * open CompizConfig settings manager, open 'commands'. Bind '~/$NAME refresh' command to a key combo of your choice (super+r for example)"
+	echo ""
+	echo "USAGE: "
+	echo "  $NAME setup-by-search \"case sensitive window name - typically html <title> to search for\""
+	echo "  $NAME setup-by-id <browser window ID>"
+	echo "  * this will setup your keybinding to refresh browser page/tab"
+	echo ""
+	echo "TROUBLESHOOTING:"
+	echo "  * Browser tab that you want to refresh must be selected (viewable)"
+	echo "  * to test if the window ID is the one you expect, run: "
+	echo "    xdotool search \"case sensitive window name\" | head -1"
+	echo "    You should get an integer ID. If not your search term is wrong (check case)"
+	echo ""
+	echo "For more info and most up to date version see https://github.com/rynop/webrf"
+	echo ""
+}
+
+function xdotool_installed() {
+	which xdotool
+	if [ $? -ne "0" ]; then
+		echo "!!ERROR: xdotool must be installed and on your path"
+		exit 1
+	fi
+}
+
+function setup_by_search() {
+	echo "" > $WR_FILE
+
+        xdotool search "$1" | head -1 > $WR_FILE
+
+	if [ -s "$WR_FILE" ]; then
+		echo "Window found. Ready for refreshing!"		
+	else
+		echo "!!ERROR: window not found. See usage"
+		exit 1
+	fi	
+}
+
+function setup_by_id() {
+	echo "$1" > $WR_FILE
+
+	if [ -s "$WR_FILE" ]; then
+		echo "Window found. Ready for refreshing!"		
+	else
+		echo "!!ERROR: window not found. See usage"
+		exit 1
+	fi	
+}
+
+function refresh() {
+	WEBREFRESH_WID=`cat $WR_FILE`
+	xdotool windowactivate $WEBREFRESH_WID
+	xdotool key ctrl+r
+}
+
+case "$1" in
+	setup-by-search)
+		if [ "$#" -lt "2" ]; then
+			echo "!!ERROR: invalid usage"
+			usage
+			exit 1
+		fi
+		xdotool_installed
+		setup_by_search "$2"
+		;;
+	setup-by-id)
+		if [ "$#" -lt "2" ]; then
+			echo "!!ERROR: invalid usage"
+			usage
+			exit 1
+		fi
+		xdotool_installed
+		setup_by_id "$2"
+		;;
+	refresh)
+		refresh
+		;;
+	*)
+		usage
+		exit 1
+		;;
+esac
+
+

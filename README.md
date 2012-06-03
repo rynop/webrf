@@ -29,3 +29,6 @@ Here are some exmaple screenshots for CompizConfig settings manager:
 ![Command binding](http://getfile1.posterous.com/getfile/files.posterous.com/temp-2012-06-01/iqtDqzEIaEgvIJyfqwezxHiFzEDrkGwivptFCtegxAoInEqkmEeJnGcFjybD/CompizConfig_Settings_Manager_747.png.scaled1000.png "cmd")
 ![Key binding](http://getfile3.posterous.com/getfile/files.posterous.com/temp-2012-06-01/nullEJitegqlbknpdztnoAevEsJlFhAlmzuinJIwIkrxeBgoqnwnApmqqHxA/CompizConfig_Settings_Manager_746.png.scaled1000.png)
 
+## TODO
+
+figure out how to do this on mac. http://stackoverflow.com/questions/1870270/sending-commands-and-strings-to-terminal-app-with-applescript may be good way...

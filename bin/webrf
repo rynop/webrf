@@ -9,18 +9,14 @@
 #
 
 NAME=webrf
-WR_FILE=~/.webrefresh
+WR_FILE=~/.webrf
 
 function usage() {
-	echo "$NAME: web browser refresh automation helper"
-	echo "REQUIREMENTS:"
-	echo "  * sudo apt-get install xdotool compizconfig-settings-manager"
-	echo "  * open CompizConfig settings manager, open 'commands'. Bind '~/$NAME refresh' command to a key combo of your choice (super+r for example)"
-	echo ""
+	echo "$NAME: web browser refresh automation helper. https://github.com/rynop/webrf"
 	echo "USAGE: "
 	echo "  $NAME setup-by-search \"case sensitive window name - typically html <title> to search for\""
+	echo " -OR-"
 	echo "  $NAME setup-by-id <browser window ID>"
-	echo "  * this will setup your keybinding to refresh browser page/tab"
 	echo ""
 	echo "TROUBLESHOOTING:"
 	echo "  * Browser tab that you want to refresh must be selected (viewable)"
@@ -66,8 +62,13 @@ function setup_by_id() {
 
 function refresh() {
 	WEBREFRESH_WID=`cat $WR_FILE`
-	xdotool windowactivate $WEBREFRESH_WID
-	xdotool key ctrl+r
+	if [ ! -n "$WEBREFRESH_WID" ]; then
+		echo "!!ERROR: must run setup first"
+		usage
+		exit 1
+	fi
+
+	xdotool key --window $WEBREFRESH_WID ctrl+r
 }
 
 case "$1" in

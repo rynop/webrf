@@ -11,24 +11,29 @@ Introducing webrf.  Stands for web refresh.  Essentially it allows you "register
 
 ## Requirements
 
-*  xdotool: <code>sudo apt-get install xdotool</code>
-*  a key binding tool like compizconfig-settings-manager: <code>sudo apt-get install compizconfig-settings-manager</code>
+*  tool that will simulate keyboard input
+  *  Linux: xdotool: <code>sudo apt-get install xdotool</code>
+  *  OSX: already built into AppleScript
+*  tool that will bind a key combination to a command
+  *  Linux: compizconfig-settings-manager: <code>sudo apt-get install compizconfig-settings-manager</code>
+  *  OSX: http://www.cocoabits.com/KeyBindingsEditor/Manual/index.html
 
 ## Setup
 
-1.  Download/clone bin/webrf to your homedir (or somewhere in your path)
-1.  Open CompizConfig settings manager, open 'commands'. Bind <code>~/webrf refresh</code> command to a key combo of your choice (<code>super+r</code> for example)
-1.  Open your browser and page where your going to want to refresh alot.
-1.  From terminal run <code>webrf setup-by-search "case sensitive window name - typically html title to search for"</code>
-1.  Go to your IDE or other window. Press your keybinding, watch browser refresh :)
+1.  Download/clone bin/webrf to your homedir (or somewhere in your path). OSX get webrf.AppleScript
+1.  Bind a key combo to webrf
+  * linux: Open CompizConfig settings manager, open 'commands'. Bind <code>~/webrf refresh</code> command to a key combo of your choice (<code>super+r</code> for example). See screenshots below.
+  * OSX: see http://www.cocoabits.com/KeyBindingsEditor/Manual/index.html
+1.  Open your browser and page that you to want to refresh alot.
+1.  Register tab/window:
+  * If on linux, from terminal run <code>webrf setup-by-search "case sensitive window name - typically html title to search for"</code>
+  * On OSX I don't know how to find the window ID. So currently its hard coded to 'Safari'.  I don't use a mac, I'm looking for someone that does who is willing to implement and send a pull request.
+1.  Go to your IDE. Press your keybinding, watch browser refresh :)
 
-If your window titles change, you can also bind by window id. run <code>webrf --help for more info</code>
+If your window titles change, you can also bind by window id. run <code>webrf --help for more info</code>. This only works on linux - no clue how to do this in AppleScript.
 
 Here are some exmaple screenshots for CompizConfig settings manager:
 
 ![Command binding](http://getfile1.posterous.com/getfile/files.posterous.com/temp-2012-06-01/iqtDqzEIaEgvIJyfqwezxHiFzEDrkGwivptFCtegxAoInEqkmEeJnGcFjybD/CompizConfig_Settings_Manager_747.png.scaled1000.png "cmd")
 ![Key binding](http://getfile3.posterous.com/getfile/files.posterous.com/temp-2012-06-01/nullEJitegqlbknpdztnoAevEsJlFhAlmzuinJIwIkrxeBgoqnwnApmqqHxA/CompizConfig_Settings_Manager_746.png.scaled1000.png)
 
-## TODO
-
-figure out how to do this on mac. http://stackoverflow.com/questions/1870270/sending-commands-and-strings-to-terminal-app-with-applescript and http://www.cocoabits.com/KeyBindingsEditor/Manual/index.html may be good way...

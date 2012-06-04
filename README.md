@@ -37,3 +37,9 @@ Here are some exmaple screenshots for CompizConfig settings manager:
 ![Command binding](http://getfile1.posterous.com/getfile/files.posterous.com/temp-2012-06-01/iqtDqzEIaEgvIJyfqwezxHiFzEDrkGwivptFCtegxAoInEqkmEeJnGcFjybD/CompizConfig_Settings_Manager_747.png.scaled1000.png "cmd")
 ![Key binding](http://getfile3.posterous.com/getfile/files.posterous.com/temp-2012-06-01/nullEJitegqlbknpdztnoAevEsJlFhAlmzuinJIwIkrxeBgoqnwnApmqqHxA/CompizConfig_Settings_Manager_746.png.scaled1000.png)
 
+## TROUBLESHOOTING:
+* Browser tab that you want to refresh must be selected (viewable)
+* to test if the window ID is the one you expect, run: 
+    xdotool search "case sensitive window name" | head -1
+    You should get an integer ID. If not your search term is wrong (check case)
+

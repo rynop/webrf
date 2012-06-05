@@ -39,7 +39,7 @@ function xdotool_installed() {
 function setup_by_search() {
 	echo "" > $WR_FILE
 
-        xdotool search "$1" | head -1 > $WR_FILE
+    xdotool search "$1" | head -1 > $WR_FILE
 
 	if [ -s "$WR_FILE" ]; then
 		echo "Window found. Ready for refreshing!"		

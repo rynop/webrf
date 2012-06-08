@@ -20,7 +20,7 @@ Introducing webrf.  Stands for web refresh.  Essentially it allows you "register
 
 ## Setup
 
-1.  Download/clone bin/webrf and put it in your path (<code>sudo cp webrf /usr/sbin && sudo chmod a+x /usr/sbin/webrf</code> . For OSX use webrf.AppleScript (work in progress).
+1.  Download/clone bin/webrf and put it in your path (<code>sudo cp webrf /usr/sbin && sudo chmod a+x /usr/sbin/webrf</code>) . For OSX use webrf.AppleScript (work in progress).
 1.  Bind a key combo to webrf
   * linux: Open CompizConfig settings manager, open 'commands'. Bind <code>~/webrf refresh</code> command to a key combo of your choice (<code>super+r</code> for example). See screenshots below.
   * OSX: see http://www.cocoabits.com/KeyBindingsEditor/Manual/index.html

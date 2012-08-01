@@ -14,15 +14,11 @@ WR_FILE=~/.webrf
 function usage() {
 	echo "$NAME: web browser refresh automation helper. https://github.com/rynop/webrf"
 	echo "USAGE: "
-	echo "  $NAME setup-by-search \"case sensitive window name (only need part of name)\""
-	echo " -OR-"
-	echo "  $NAME setup-by-id <browser window ID>"
+	echo "  $NAME setup"
+	echo "  ^ This will bring up a pointer where you click on the window you want to refresh"
 	echo ""
 	echo "TROUBLESHOOTING:"
 	echo "  * Browser tab that you want to refresh must be selected (viewable)"
-	echo "  * to test if the window ID is the one you expect, run: "
-	echo "    xdotool search \"case sensitive window name\" | head -1"
-	echo "    You should get an integer ID. If not your search term is wrong (check case)"
 	echo ""
 	echo "For more info and most up to date version see https://github.com/rynop/webrf"
 	echo ""
@@ -76,6 +72,17 @@ function setup_by_id() {
 	fi	
 }
 
+function setup_by_select() {
+	WID=`xdotool selectwindow 2> /dev/null`
+	echo "$WID" > $WR_FILE
+	if [ -s "$WR_FILE" ]; then
+		showWindowDetails $WID		
+	else
+		echo "!!ERROR: window not found. See usage"
+		exit 1
+	fi
+}
+
 function refresh() {
 	WEBREFRESH_WID=`cat $WR_FILE`
 	if [ ! -n "$WEBREFRESH_WID" ]; then
@@ -88,23 +95,9 @@ function refresh() {
 }
 
 case "$1" in
-	setup-by-search)
-		if [ "$#" -lt "2" ]; then
-			echo "!!ERROR: invalid usage"
-			usage
-			exit 1
-		fi
+	setup)
 		xdotool_installed
-		setup_by_search "$2"
-		;;
-	setup-by-id)
-		if [ "$#" -lt "2" ]; then
-			echo "!!ERROR: invalid usage"
-			usage
-			exit 1
-		fi
-		xdotool_installed
-		setup_by_id "$2"
+		setup_by_select
 		;;
 	refresh)
 		refresh

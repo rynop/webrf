@@ -26,9 +26,8 @@ Introducing webrf.  Stands for web refresh.  Essentially it allows you "register
   * OSX: see http://www.cocoabits.com/KeyBindingsEditor/Manual/index.html
 1.  Open your browser and page that you to want to refresh alot.
 1.  Register tab/window:
-  * If on linux, from terminal run one of the following:
-     * <code>webrf setup-by-search "case sensitive window name - typically html title to search for"</code>. You can also register by window ID instead of search. 
-     * <code>webrf setup-by-id [browser window ID]</code>. You can find id by running <code>xdotool search "window name"</code>.
+  * If on linux, from terminal run:
+     * <code>webrf setup</code>. This will bring up a tool that allows you to click on the window you want to refresh. 
   * On OSX I don't know how to find the window ID. So currently its hard coded to 'Safari'.  I don't use a mac, I'm looking for someone that does who is willing to implement and send a pull request.
 1.  Go to your IDE. Press your keybinding, watch browser refresh :)
 
@@ -39,8 +38,7 @@ Here are some exmaple screenshots for CompizConfig settings manager:
 ![Command binding](http://getfile1.posterous.com/getfile/files.posterous.com/temp-2012-06-01/iqtDqzEIaEgvIJyfqwezxHiFzEDrkGwivptFCtegxAoInEqkmEeJnGcFjybD/CompizConfig_Settings_Manager_747.png.scaled1000.png "cmd")
 ![Key binding](http://getfile3.posterous.com/getfile/files.posterous.com/temp-2012-06-01/nullEJitegqlbknpdztnoAevEsJlFhAlmzuinJIwIkrxeBgoqnwnApmqqHxA/CompizConfig_Settings_Manager_746.png.scaled1000.png)
 
-## TROUBLESHOOTING:
+## TROUBLESHOOTING
+
 * Browser tab that you want to refresh must be selected (viewable)
-* to test if the window ID is the one you expect, run: 
-    xdotool search "case sensitive window name" | head -1
-    You should get an integer ID. If not your search term is wrong (check case)
+

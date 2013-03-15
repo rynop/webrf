@@ -1,7 +1,9 @@
 webrf
 =====
 
-quickly refresh that browser on your other screen
+quickly refresh that browser on your other screen - WITHOUT losing window focus.
+
+There are other apps out there that auto-refresh a browser window on save/change. This is a more generic solution. Ex: you can switch from vi to eclipse and this will still work.
 
 ## What is this?
 
